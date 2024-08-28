@@ -1,0 +1,17 @@
+<h1>Add a Review for <%= @restaurant.name %></h1>
+
+<%= form_with model: [@restaurant, @review], local: true, url: restaurant_reviews_path(@restaurant) do |f| %>
+  <div>
+    <%= f.label :rating %>
+    <%= f.select :rating, (0..5).to_a %>
+  </div>
+
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div>
+    <%= f.submit 'Create Review' %>
+  </div>
+<% end %>

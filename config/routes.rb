@@ -11,4 +11,16 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+# Rutas para los restaurantes
+get 'restaurants', to: 'restaurants#index', as: :restaurants
+get 'restaurants/new', to: 'restaurants#new', as: :new_restaurant
+post 'restaurants', to: 'restaurants#create'
+get 'restaurants/:id', to: 'restaurants#show', as: :restaurant
+
+# Rutas para los reviews, anidadas dentro de los restaurantes
+get 'restaurants/:restaurant_id/reviews/new', to: 'reviews#new', as: :new_restaurant_review
+post 'restaurants/:restaurant_id/reviews', to: 'reviews#create'
+
+  # La raíz de la aplicación podría dirigir a la lista de restaurantes
+  root to: 'restaurants#index'
 end
